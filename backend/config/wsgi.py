@@ -1,12 +1,3 @@
-"""
-WSGI config for config project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/6.0/howto/deployment/wsgi/
-"""
-
 import os
 
 from django.core.wsgi import get_wsgi_application
@@ -36,7 +27,17 @@ def create_superuser():
             username=username,
             email=email,
             password=password,
+            role="admin",
         )
+        print("Superuser créé")
+    else:
+        user = User.objects.get(username=username)
+        user.is_staff = True
+        user.is_superuser = True
+        user.role = "admin"
+        user.set_password(password)
+        user.save()
+        print("Superuser mis à jour")
 
 
 try:
