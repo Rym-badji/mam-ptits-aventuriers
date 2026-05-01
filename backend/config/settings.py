@@ -3,6 +3,9 @@ from datetime import timedelta
 import os
 import dj_database_url
 from dotenv import load_dotenv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 load_dotenv()
 
@@ -24,6 +27,14 @@ CORS_ALLOWED_ORIGINS = os.getenv(
     "http://localhost:5173,https://mam-ptits-aventuriers.onrender.com"
 ).split(",")
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv("CLOUDINARY_CLOUD_NAME"),
+    'API_KEY': os.getenv("CLOUDINARY_API_KEY"),
+    'API_SECRET': os.getenv("CLOUDINARY_API_SECRET"),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +54,8 @@ INSTALLED_APPS = [
     'admissions',
     'faq',
     'testimonials',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
