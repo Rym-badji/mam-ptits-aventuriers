@@ -19,9 +19,10 @@ CSRF_TRUSTED_ORIGINS = os.getenv(
     "http://localhost:5173"
 ).split(",")
 
-CORS_ALLOWED_ORIGINS = [
-    "https://mam-ptits-aventuriers.onrender.com",
-]
+CORS_ALLOWED_ORIGINS = os.getenv(
+    "CORS_ALLOWED_ORIGINS",
+    "http://localhost:5173,https://mam-ptits-aventuriers.onrender.com"
+).split(",")
 
 # Application definition
 
