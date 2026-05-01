@@ -33,6 +33,15 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.getenv("CLOUDINARY_API_SECRET"),
 }
 
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Application definition
@@ -48,14 +57,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
+    'cloudinary_storage',
+    'cloudinary',
+
     'mam',
     'staff.apps.StaffConfig',
     'content',
     'admissions',
     'faq',
     'testimonials',
-    'cloudinary',
-    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
