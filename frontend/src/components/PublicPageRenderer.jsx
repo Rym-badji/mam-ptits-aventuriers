@@ -171,7 +171,7 @@ function PublicPageRenderer({ page, onRefresh }) {
                         {section.images.slice(1).map((img) => (
                           <img
                             key={img.id}
-                            src={getMediaUrl(section.images[0].image)}
+                            src={getMediaUrl(img.image)}
                             alt={img.alt_text || section.title}
                           />
                         ))}
